@@ -13,7 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-
+//Ported By Sefer"Rhoin"Ergün
 #include "build_defs.h"
 #if defined(XASH_WINDOWS)
 #include <windows.h>
@@ -68,7 +68,8 @@ void Sys_Error( const char *errorstring )
 	int s;
  
 	d = XOpenDisplay(NULL);
-	if (d == NULL) {
+	if (d == NULL) 
+	{
       fprintf(stderr, "Xash Error: %s\n",errorstring);
       exit(1);
 	}
@@ -82,9 +83,11 @@ void Sys_Error( const char *errorstring )
 	XSelectInput(d, w, ExposureMask | KeyPressMask);
 	XMapWindow(d, w);
 	XSetFont(d, DefaultGC(d,s), font->fid);
-	while (1) {
+	while (1) 
+	{
       XNextEvent(d, &e);
-      if (e.type == Expose) {
+      if (e.type == Expose) 
+      {
          XDrawString(d, w, DefaultGC(d, s), 10, 50, errorstring, strlen(errorstring));
       }
       if (e.type == KeyPress)
